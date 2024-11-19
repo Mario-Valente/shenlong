@@ -10,5 +10,5 @@ COPY . .
 
 RUN go build -o /go/bin/app
 
-ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["/go/bin/app/shenlong --server"]
 
