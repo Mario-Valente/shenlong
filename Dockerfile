@@ -1,4 +1,4 @@
-FROM 1.23.3-alpine3.20
+FROM golang:1.23.3-alpine3.20
 
 WORKDIR /go/src/app
 
@@ -10,5 +10,5 @@ COPY . .
 
 RUN go build -o /go/bin/app
 
-ENTRYPOINT ["/go/bin/app/shenlong --server"]
+ENTRYPOINT ["/go/bin/app", "server"]
 
