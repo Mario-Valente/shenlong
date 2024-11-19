@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/Mario-valente/shenlong/pkgs/utilis"
+	utils "github.com/Mario-valente/shenlong/pkgs/utils"
 	batchv1 "k8s.io/api/batch/v1"
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -17,7 +17,7 @@ func CreateJobsK8s(name string, namespace string, image string, command []string
 		fmt.Println("error to create client in k8s")
 	}
 
-	name = utilis.CreateRadomName(name)
+	name = utils.CreateRadomName(name)
 
 	job := &batchv1.Job{
 		ObjectMeta: metav1.ObjectMeta{

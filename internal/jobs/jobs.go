@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/Mario-valente/shenlong/internal/k8s"
-	"github.com/Mario-valente/shenlong/pkgs/utilis"
+	utils "github.com/Mario-valente/shenlong/pkgs/utils"
 	"github.com/spf13/cobra"
 )
 
@@ -28,7 +28,7 @@ func GetJob(rootCmd *cobra.Command, args []string) {
 	name, _ := rootCmd.Flags().GetString("name")
 	namespace, _ := rootCmd.Flags().GetString("namespace")
 
-	name = utilis.CreateRadomName(name)
+	name = utils.CreateRadomName(name)
 
 	_, err := k8s.GetJobsK8s(name, namespace, pathKubeconfig)
 	if err != nil {
