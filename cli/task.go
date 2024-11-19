@@ -2,6 +2,7 @@ package cli
 
 import (
 	"github.com/Mario-valente/shenlong/internal/jobs"
+	"github.com/Mario-valente/shenlong/internal/server"
 	"github.com/spf13/cobra"
 )
 
@@ -25,4 +26,30 @@ func RegisterCreatejobCmd(rootCmd *cobra.Command) {
 
 	rootCmd.AddCommand(cmd)
 
+}
+
+func RegisterServerCmd(rootCmd *cobra.Command) {
+	cmd := &cobra.Command{
+		Use: "server",
+		Run: server.Server,
+	}
+
+	cmd.PersistentFlags().String("run", "", "run the server")
+
+	rootCmd.AddCommand(cmd)
+}
+
+func RegisterGetJobCmd(rootCmd *cobra.Command) {
+	cmd := &cobra.Command{
+		Use: "get-job",
+		Run: jobs.GetJob,
+	}
+
+	cmd.PersistentFlags().String("name", "", "name of the job")
+	cmd.PersistentFlags().String("namespace", "default", "namespace of the job")
+	cmd.PersistentFlags().String("kubeconfig", "", "path to kubeconfig file")
+
+	cmd.MarkPersistentFlagRequired("name")
+
+	rootCmd.AddCommand(cmd)
 }

@@ -15,6 +15,8 @@ func main() {
 	}
 
 	cli.RegisterCreatejobCmd(rootCmd)
+	cli.RegisterServerCmd(rootCmd)
+	cli.RegisterGetJobCmd(rootCmd)
 
 	if err := rootCmd.Execute(); err != nil {
 		os.Exit(1)
