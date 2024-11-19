@@ -6,7 +6,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-func RegisterCreatejobCmd(rootCmd *cobra.Command) {
+func RegisterCreateJobCmd(rootCmd *cobra.Command) {
 	cmd := &cobra.Command{
 		Use: "create-job",
 		Run: jobs.CreateJob,

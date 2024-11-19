@@ -14,7 +14,7 @@ func main() {
 		Short: "A CLI tool for create jobs in k8s",
 	}
 
-	cli.RegisterCreatejobCmd(rootCmd)
+	cli.RegisterCreateJobCmd(rootCmd)
 	cli.RegisterServerCmd(rootCmd)
 	cli.RegisterGetJobCmd(rootCmd)
 
