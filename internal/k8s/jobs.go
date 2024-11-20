@@ -11,7 +11,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
-func CreateJobsK8s(name string, namespace string, image string, command []string, ttl int32, pathKubeconfig string) (string, error) {
+func CreateJobsK8s(name string, namespace string, image string, command []string, ttl int32, pathKubeconfig string) (*batchv1.Job, error) {
 	clientK8s, err := CreateClientK8s(pathKubeconfig)
 	if err != nil {
 		fmt.Println("error to create client in k8s")
@@ -59,11 +59,11 @@ func CreateJobsK8s(name string, namespace string, image string, command []string
 		}
 	}
 
-	return "Job created", nil
+	return job, nil
 
 }
 
-func GetJobsK8s(name string, namespace string, pathKubeconfig string) (string, error) {
+func GetJobsK8s(name string, namespace string, pathKubeconfig string) (*batchv1.Job, error) {
 	clientK8s, err := CreateClientK8s(pathKubeconfig)
 	if err != nil {
 		fmt.Println("error to create client in k8s")
@@ -76,5 +76,5 @@ func GetJobsK8s(name string, namespace string, pathKubeconfig string) (string, e
 	}
 	fmt.Printf("Job %q.\n", job.GetObjectMeta().GetName())
 
-	return "Job retrieved", nil
+	return job, nil
 }
