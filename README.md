@@ -8,7 +8,7 @@ Welcome to the Shenlong Project! This README will guide you through the setup an
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
-- [flags](#flags)
+- [Commands](#commands)
 
 ## Introduction
 The Shenlong Project is designed to run jobs in k8 via api or cli comands
@@ -65,11 +65,8 @@ shenlong server --port 3001
 ## Contributing
 
 
-## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-
-## flags
+## Commands
 
 | Comando         | Flag           | Tipo         | Valor Padrão      | Descrição                                          | Obrigatório |
 |------------------|----------------|--------------|-------------------|--------------------------------------------------|-------------|
@@ -96,3 +93,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 |                  | `--kubeconfig` | `String`     | `""`              | Caminho para o arquivo kubeconfig                | Não         |
 |                  | `--ttl`        | `Int32`      | `100`             | Tempo de vida do cron após a execução            | Não         |
 |                  | `--schedule`   | `String`     | `*/5 * * * *`     | Agenda para executar o cron                      | Sim         |
+
+
+## License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
