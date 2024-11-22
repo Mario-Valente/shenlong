@@ -67,3 +67,18 @@ func GetCronsK8s(name string, namespace string, pathKubeconfig string) (*batchv1
 
 	return cron, nil
 }
+
+func DeleteCronsK8s(name string, namespace string, pathKubeconfig string) error {
+	clientK8s, err := CreateClientK8s(pathKubeconfig)
+	if err != nil {
+		fmt.Println("error to create client in k8s")
+	}
+
+	cronClient := clientK8s.BatchV1().CronJobs(namespace)
+	err = cronClient.Delete(context.TODO(), name, metav1.DeleteOptions{})
+	if err != nil {
+		log.Fatalf("Error deleting Cron: %s", err.Error())
+	}
+
+	return nil
+}

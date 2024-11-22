@@ -17,6 +17,7 @@ func main() {
 	cli.RegisterCreateJobCmd(rootCmd)
 	cli.RegisterServerCmd(rootCmd)
 	cli.RegisterGetCmd(rootCmd)
+	cli.RegisterDeleteCmd(rootCmd)
 	cli.RegisterCreateCronCmd(rootCmd)
 
 	if err := rootCmd.Execute(); err != nil {

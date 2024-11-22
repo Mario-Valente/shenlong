@@ -80,3 +80,20 @@ func RegisterCreateCronCmd(rootCmd *cobra.Command) {
 	rootCmd.AddCommand(cmd)
 
 }
+
+func RegisterDeleteCmd(rootCmd *cobra.Command) {
+	cmd := &cobra.Command{
+		Use: "delete",
+		Run: cmd.Delete,
+	}
+
+	cmd.PersistentFlags().String("name", "", "name of the job")
+	cmd.PersistentFlags().String("namespace", "default", "namespace of the job")
+	cmd.PersistentFlags().String("kubeconfig", "", "path to kubeconfig file")
+	cmd.PersistentFlags().String("job", "", "job to delete")
+	cmd.PersistentFlags().String("cron", "", "cron to delete")
+
+	cmd.MarkPersistentFlagRequired("name")
+
+	rootCmd.AddCommand(cmd)
+}

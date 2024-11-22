@@ -21,14 +21,3 @@ func CreateJob(rootCmd *cobra.Command, args []string) {
 		fmt.Println("error to create job in k8s")
 	}
 }
-
-func GetJob(rootCmd *cobra.Command, args []string) {
-	pathKubeconfig, _ := rootCmd.Flags().GetString("pathKubeconfig")
-	name, _ := rootCmd.Flags().GetString("name")
-	namespace, _ := rootCmd.Flags().GetString("namespace")
-
-	_, err := k8s.GetJobsK8s(name, namespace, pathKubeconfig)
-	if err != nil {
-		fmt.Println("error to get job in k8s")
-	}
-}
