@@ -27,3 +27,24 @@ func Get(rootCmd *cobra.Command, args []string) {
 		}
 	}
 }
+
+func Delete(rootCmd *cobra.Command, args []string) {
+	pathKubeconfig, _ := rootCmd.Flags().GetString("pathKubeconfig")
+	name, _ := rootCmd.Flags().GetString("name")
+	namespace, _ := rootCmd.Flags().GetString("namespace")
+	job, _ := rootCmd.Flags().GetString("job")
+	cron, _ := rootCmd.Flags().GetString("cron")
+
+	switch {
+	case job != "":
+		err := k8s.DeleteJobsK8s(name, namespace, pathKubeconfig)
+		if err != nil {
+			fmt.Println("error to delete job in k8s")
+		}
+	case cron != "":
+		err := k8s.DeleteCronsK8s(name, namespace, pathKubeconfig)
+		if err != nil {
+			fmt.Println("error to delete cron in k8s")
+		}
+	}
+}

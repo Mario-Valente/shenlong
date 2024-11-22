@@ -11,6 +11,8 @@ func Server() {
 	e.POST("/jobs/", controller.CreateJob)
 	e.GET("/crons/:cronName/namespace/:nsName", controller.GetCron)
 	e.POST("/crons/", controller.CreateCron)
+	e.DELETE("/jobs/:jobName/namespace/:nsName", controller.DeleteJob)
+	e.DELETE("/crons/:cronName/namespace/:nsName", controller.DeleteCron)
 	e.Logger.Fatal(e.Start(":3001"))
 
 }

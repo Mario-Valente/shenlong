@@ -32,3 +32,14 @@ func CreateCron(c echo.Context) error {
 	}
 	return c.JSON(http.StatusCreated, result)
 }
+
+func DeleteCron(c echo.Context) error {
+	name := c.Param("cronName")
+	namespace := c.Param("nsName")
+
+	err := k8s.DeleteCronsK8s(name, namespace, "")
+	if err != nil {
+		return c.JSON(http.StatusNotFound, err)
+	}
+	return c.JSON(http.StatusNoContent, nil)
+}

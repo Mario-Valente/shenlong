@@ -32,3 +32,14 @@ func CreateJob(c echo.Context) error {
 	}
 	return c.JSON(http.StatusCreated, result)
 }
+
+func DeleteJob(c echo.Context) error {
+	name := c.Param("jobName")
+	namespace := c.Param("nsName")
+
+	err := k8s.DeleteJobsK8s(name, namespace, "")
+	if err != nil {
+		return c.JSON(http.StatusNotFound, err)
+	}
+	return c.JSON(http.StatusNoContent, nil)
+}

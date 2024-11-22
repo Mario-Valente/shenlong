@@ -78,3 +78,19 @@ func GetJobsK8s(name string, namespace string, pathKubeconfig string) (*batchv1.
 
 	return job, nil
 }
+
+func DeleteJobsK8s(name string, namespace string, pathKubeconfig string) error {
+	clientK8s, err := CreateClientK8s(pathKubeconfig)
+	if err != nil {
+		fmt.Println("error to create client in k8s")
+	}
+
+	jobClient := clientK8s.BatchV1().Jobs(namespace)
+	err = jobClient.Delete(context.TODO(), name, metav1.DeleteOptions{})
+	if err != nil {
+		log.Fatalf("Error deleting Job: %s", err.Error())
+	}
+	fmt.Printf("Deleted Job %q.\n", name)
+
+	return nil
+}
