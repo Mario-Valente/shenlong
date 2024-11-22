@@ -54,6 +54,12 @@ shenlong get --job --name teste --namespace default
 
 ```
 
+- Delete 
+
+```bash
+shenlong delete --job --name teste --namespace default
+```
+
 - Server
 
 ```bash
