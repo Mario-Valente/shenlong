@@ -2,6 +2,7 @@ package k8s
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"log"
 
@@ -74,7 +75,12 @@ func GetJobsK8s(name string, namespace string, pathKubeconfig string) (*batchv1.
 	if err != nil {
 		log.Fatalf("Error getting Job: %s", err.Error())
 	}
-	fmt.Printf("Job %q.\n", job.GetObjectMeta().GetName())
+
+	jobJSON, err := json.MarshalIndent(job, "", "  ")
+	if err != nil {
+		log.Fatalf("Error marshalling Job to JSON: %s", err.Error())
+	}
+	fmt.Printf("Job: %s\n", string(jobJSON))
 
 	return job, nil
 }

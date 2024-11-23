@@ -2,6 +2,7 @@ package k8s
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"log"
 
@@ -64,6 +65,12 @@ func GetCronsK8s(name string, namespace string, pathKubeconfig string) (*batchv1
 	if err != nil {
 		log.Fatalf("Error getting Cron: %s", err.Error())
 	}
+
+	cronJSON, err := json.MarshalIndent(cron, "", "  ")
+	if err != nil {
+		log.Fatalf("Error marshalling Cron to JSON: %s", err.Error())
+	}
+	fmt.Printf("Cron: %s\n", string(cronJSON))
 
 	return cron, nil
 }
