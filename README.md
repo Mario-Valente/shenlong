@@ -11,7 +11,7 @@ Welcome to the Shenlong Project! This README will guide you through the setup an
 - [Commands](#commands)
 
 ## Introduction
-The Shenlong Project is designed to run jobs in k8 via api or cli comands
+The Shenlong Project is designed to run jobs in k8 via api or cli comands (similiar to aws batch)
 
 ## Installation
 To install the Shenlong Project, follow these steps:
