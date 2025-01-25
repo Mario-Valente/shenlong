@@ -5,7 +5,7 @@ import (
 
 	"github.com/Mario-valente/shenlong/internal/k8s"
 	"github.com/Mario-valente/shenlong/models"
-	"github.com/labstack/echo"
+	"github.com/labstack/echo/v4"
 )
 
 func GetCron(c echo.Context) error {
