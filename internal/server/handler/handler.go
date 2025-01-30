@@ -8,6 +8,7 @@ import (
 	"github.com/Mario-valente/shenlong/internal/server/controller"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
 type LogEntry struct {
@@ -51,6 +52,9 @@ func Server() {
 	e.DELETE("/jobs/:jobName/namespace/:nsName", controller.DeleteJob)
 	e.DELETE("/crons/:cronName/namespace/:nsName", controller.DeleteCron)
 	e.GET("/logs/:typeLog", controller.LogsOutputs)
+	e.GET("/latency/", controller.LatencyOutputs)
+	e.GET("/error/:statusCode", controller.ErrorSimulateCount)
+	e.GET("/metrics", echo.WrapHandler(promhttp.Handler()))
 	e.Logger.Fatal(e.Start(":3001"))
 
 }
